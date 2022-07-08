@@ -1,4 +1,5 @@
 "use strict";
+// PARA INSTALAR EL CONTENEDOR DE DOCKER
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// docker run -d --name emqxp -p 1883:1883 -p 8083:8083 -p 8883:8883 -p 8084:8084 -p 18083:18083 emqx
 const fastify_1 = __importDefault(require("fastify"));
 const mqtt_1 = __importDefault(require("mqtt"));
 const cors_1 = __importDefault(require("@fastify/cors"));
@@ -29,6 +31,8 @@ const client = mqtt_1.default.connect(connectUrl, {
 });
 // Seleccionamos el topic
 const topic = "presencia"; // topic = idSensor o algo así
+// sensorX/presencia/espinardo
+// sensorX/#/espinardo
 // Acciones a realizar cuando se conecte
 client.on("connect", () => {
     console.log("Connected");
